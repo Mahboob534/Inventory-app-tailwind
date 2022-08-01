@@ -1,12 +1,13 @@
 import { useState } from "react";
 
-export default function Categories() {
+export default function Categories(props) {
+  const setCategoryList= props.setCategoryList
   const [isShow, setIsShow] = useState(false);
   const [categoryFormData, setCategoryFormData] = useState({
     title: "",
     description: "",
   });
-  const [categoryList,setCategoryList]=useState([])
+  
 
   const changeHandle = (e) => {
     const { name, value } = e.target;
@@ -21,10 +22,12 @@ export default function Categories() {
 //   };
 const addNewCategory= (e)=>{
     e.preventDefault()
-    const newCat={...categoryFormData, createdAt: new Date().toISOString()}
+    const newCat={...categoryFormData, createdAt: new Date().toISOString() , id: new Date().getTime()}
     // setCategoryList([...categoryList,newCat]) or
     setCategoryList((prevState) => [...prevState,newCat])
-    console.log(categoryList);
+      console.log(categoryFormData);
+    setCategoryFormData({title:"" , description:""})
+    // console.log(categoryList);
 }
 
   return (
