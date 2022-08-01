@@ -1,9 +1,13 @@
-
+import {useState} from 'react'
 import './App.css';
 import Navbar from './components/Navbar'
 import Categories from './components/Categories';
+import Products from './components/Products';
 function App() {
-  //  const category = [
+
+  const [categoryList,setCategoryList]=useState([]) 
+
+  //  const category = [ 
   //   {
   //     id:"",
   //     description:"",
@@ -25,7 +29,9 @@ function App() {
       <Navbar/>
 
       <div className='container max-w-screen-sm mx-auto p-4'>
-     <Categories  />
+     <Categories setCategoryList={setCategoryList} />
+     <Products categoryList={categoryList}/>
+
 
 
       </div>
