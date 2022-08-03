@@ -2,13 +2,14 @@ import { useState } from "react";
 
 export default function Products(props) {
   const categoryList = props.categoryList;
+  const setproductsList=props.setproductsList
   const elementForm = ["title", "quantity"];
   const [products, setProducts] = useState({
     title: "",
     quantity: 0,
     category: "",
   });
-  const [productsList, setproductsList] = useState([]);
+  
 
   const changehandle = (e) => {
     const { name, value } = e.target;
