@@ -1,43 +1,27 @@
-import {useState} from 'react'
-import './App.css';
-import Navbar from './components/Navbar'
-import Categories from './components/Categories';
-import Products from './components/Products';
+import { useState } from "react";
+import "./App.css";
+import Navbar from "./components/Navbar";
+import Categories from "./components/Categories";
+import Products from "./components/Products";
+import ProductList from "./components/ProductList";
 function App() {
+  const [categoryList, setCategoryList] = useState([]);
+  const [productsList, setproductsList] = useState([]);
 
-  const [categoryList,setCategoryList]=useState([]) 
-
-  //  const category = [ 
-  //   {
-  //     id:"",
-  //     description:"",
-  //     title:"",
-
-  //   },
-  //  ]
-  //  const product = [
-  //   {
-  //     category:category,
-  //     quantity:"",
-  //     title:"",
-
-  //   },
-  //  ]
+  
+  
   return (
-    <div >
+    <div>
       <div className="bg-slate-800 min-h-screen">
-      <Navbar/>
+        <Navbar />
 
-      <div className='container max-w-screen-sm mx-auto p-4'>
-     <Categories setCategoryList={setCategoryList} />
-     <Products categoryList={categoryList}/>
+        <div className="container max-w-screen-sm mx-auto p-4">
+          <Categories setCategoryList={setCategoryList} />
+          <Products categoryList={categoryList} setproductsList={setproductsList} />
+          <ProductList products={productsList} setproductsList={setproductsList} categories={categoryList}/>
 
-
-
+        </div>
       </div>
-    </div>
- 
-
     </div>
   );
 }

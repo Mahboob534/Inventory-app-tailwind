@@ -25,7 +25,7 @@ const addNewCategory= (e)=>{
     const newCat={...categoryFormData, createdAt: new Date().toISOString() , id: new Date().getTime()}
     // setCategoryList([...categoryList,newCat]) or
     setCategoryList((prevState) => [...prevState,newCat])
-      console.log(categoryFormData);
+     // console.log(categoryFormData);
     setCategoryFormData({title:"" , description:""})
     // console.log(categoryList);
 }
