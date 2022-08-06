@@ -2,13 +2,14 @@ import { useState } from "react";
 
 export default function Products(props) {
   const categoryList = props.categoryList;
+  const setproductsList=props.setproductsList
   const elementForm = ["title", "quantity"];
   const [products, setProducts] = useState({
     title: "",
     quantity: 0,
     category: "",
   });
-  const [productsList, setproductsList] = useState([]);
+  
 
   const changehandle = (e) => {
     const { name, value } = e.target;
@@ -17,15 +18,15 @@ export default function Products(props) {
   };
 
   const addNewProducts = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const newProduct = {
       ...products,
       createdAt: new Date().toISOString(),
       id: new Date().getTime(),
     };
     setproductsList((prevState) => [...prevState, newProduct]);
-    e.target.reset()
-    setProducts({title:"", quantity:0, category:"" });
+    e.target.reset();
+    setProducts({ title: "", quantity: 0, category: "" });
   };
 
   return (
@@ -34,7 +35,10 @@ export default function Products(props) {
         <h2 className="text-xl text-slate-300 font-bold mb-2">
           ADD NEW PRODUCTS
         </h2>
-        <form className="bg-slate-700 p-4 rounded-xl flex flex-col gap-y-4"  onSubmit={addNewProducts}>
+        <form
+          className="bg-slate-700 p-4 rounded-xl flex flex-col gap-y-4"
+          onSubmit={addNewProducts}
+        >
           {elementForm.map((item) => {
             return (
               <div key={item}>
@@ -82,10 +86,9 @@ export default function Products(props) {
           </div>
           <div className="flex item-center justify-between gap-x-4">
             <button
-            type="submit"
+              type="submit"
               id="add-new-product"
               className="flex-1 bg-slate-500 text-slate-200 rounded-xl py-2"
-             
             >
               add New Product
             </button>

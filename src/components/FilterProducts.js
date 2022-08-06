@@ -1,24 +1,23 @@
 import { useState } from "react";
-import { ReactReduxContext } from "react-redux";
 
 function FilterProducts(props) {
-  const searchValue=props.searchValue
-  const sort=props.sort
-  const onSort=props.onSort
-  const onSearch=props.onSearch
+  const searchValue = props.searchValue;
+  const sort = props.sort;
+  const onSort = props.onSort;
+  const onSearch = props.onSearch;
+  const categoryList = props.categoryList;
+  const onSelectedCategory=props.onSelectedCategory
+  const selectedCategory=props.selectedCategory
 
-  
-
- 
   return (
     <div>
-      <div className="flex  justify-center items-center mb-2">
-        <label htmlFor="search-input" className="text-slate-500 text-lg mr-6">
+      <div className="flex  justify-between items-center mb-5">
+        <label htmlFor="search-input" className="text-slate-500 text-lg ">
           Search
         </label>
         <input
           type="text"
-          name={ searchValue }
+          name={searchValue}
           id="search-input"
           className="text-slate-400
       border border-slate-500 bg-transparent rounded-xl"
@@ -26,8 +25,8 @@ function FilterProducts(props) {
           onChange={onSearch}
         />
       </div>
-      <div className="flex  justify-center items-center mb-2">
-        <label htmlFor="sort-label" className="text-slate-500 text-lg mr-6">
+      <div className="flex  justify-between items-center mb-6">
+        <label htmlFor="sort-label" className="text-slate-500 text-lg">
           sort
         </label>
         <select
@@ -47,6 +46,29 @@ function FilterProducts(props) {
           <option value="earliest" className="bg-slate-500 text-slate-300">
             earliest
           </option>
+        </select>
+      </div>
+      <div className="flex justify-between items-center mb-2">
+        <label htmlFor="sort-label2" className="text-slate-500 text-lg ">
+          Category
+        </label>
+        <select
+          name="{sortBycategory}"
+          id="sort-categories"
+          className="bg-transparent text-slate-400
+       rounded-xl"
+          value={selectedCategory}
+          onChange={onSelectedCategory}
+         
+        >
+          <option value="" className="bg-slate-500 text-slate-300">
+            All
+          </option>
+          {categoryList.map((item) => {
+           return  <option value={item.id} key={item.id} className="bg-slate-500 text-slate-300">
+              {item.title}
+            </option>
+          })}       
         </select>
       </div>
     </div>
